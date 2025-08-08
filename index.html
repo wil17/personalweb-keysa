@@ -33,7 +33,7 @@
             --btn-outline-custom-color: #4a5568;
             --timeline-item-bg: transparent;
             --shadow-color: rgba(0,0,0,0.05);
-            --btn-custom-hover-bg: #2d3748; /* Warna hover baru untuk light mode */
+            --btn-custom-hover-bg: #2d3748;
         }
 
         body.dark-mode {
@@ -62,7 +62,7 @@
             --btn-outline-custom-color: #63b3ed;
             --timeline-item-bg: rgba(74, 85, 104, 0.3);
             --shadow-color: rgba(0,0,0,0.2);
-            --btn-custom-hover-bg: #4299e1; /* Warna hover untuk dark mode */
+            --btn-custom-hover-bg: #4299e1;
         }
         
         body {
@@ -211,7 +211,7 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px var(--shadow-color);
             color: white;
-            background: var(--btn-custom-hover-bg); /* Warna hover baru */
+            background: var(--btn-custom-hover-bg);
         }
         
         .btn-outline-custom {
@@ -336,6 +336,42 @@
             display: none;
         }
         
+        /* Style untuk tombol bahasa */
+        .language-toggle {
+            background: transparent;
+            border: 1px solid var(--btn-outline-custom-color);
+            color: var(--btn-outline-custom-color);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle:hover {
+            background: var(--btn-custom-bg);
+            color: white;
+            border-color: var(--btn-custom-bg);
+        }
+        
+        .mobile-language-toggle {
+            margin-right: 10px;
+        }
+        
+        .desktop-language-toggle {
+            margin-left: 10px;
+        }
+        
+        /* Style baru untuk grup tombol desktop */
+        .desktop-toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 15px;
+        }
+        
         @media (max-width: 992px) {
             .mobile-theme-toggle {
                 display: block;
@@ -346,7 +382,19 @@
             }
             
             .navbar-toggler-container {
-                order: 2; /* Pindahkan ke kanan */
+                order: 2;
+            }
+            
+            .mobile-language-toggle {
+                display: block;
+            }
+            
+            .desktop-language-toggle {
+                display: none;
+            }
+            
+            .desktop-toggle-group {
+                display: none;
             }
         }
         
@@ -413,6 +461,9 @@
             
             <!-- Container untuk toggle mobile dan hamburger -->
             <div class="navbar-toggler-container">
+                <!-- Toggle bahasa untuk mobile -->
+                <button class="language-toggle mobile-language-toggle" id="languageToggleMobile">ID</button>
+                
                 <!-- Toggle dark mode untuk mobile -->
                 <button class="theme-toggle mobile-theme-toggle" id="themeToggleMobile">
                     <i class="fas fa-moon"></i>
@@ -427,25 +478,32 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about" data-key="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
+                        <a class="nav-link" href="#education" data-key="education">Education</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
+                        <a class="nav-link" href="#experience" data-key="experience">Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="#skills" data-key="skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact" data-key="contact">Contact</a>
                     </li>
                 </ul>
-                <!-- Toggle dark mode untuk desktop -->
-                <button class="theme-toggle desktop-theme-toggle ms-2" id="themeToggleDesktop">
-                    <i class="fas fa-moon"></i>
-                </button>
+                
+                <!-- Grup tombol untuk desktop (tema dan bahasa dalam satu grup) -->
+                <div class="desktop-toggle-group">
+                    <!-- Toggle dark mode untuk desktop -->
+                    <button class="theme-toggle desktop-theme-toggle" id="themeToggleDesktop">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Toggle bahasa untuk desktop -->
+                    <button class="language-toggle desktop-language-toggle" id="languageToggleDesktop">ID</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -459,12 +517,12 @@
                 </div>
                 <div class="col-md-8 text-center text-md-start">
                     <h1 class="display-4 fw-bold mb-3">Annisa Keysa Syabina</h1>
-                    <p class="lead mb-4">International Accounting Graduate | Financial Analyst | Event Organizer</p>
-                    <p class="mb-4">Cum Laude graduate in International Accounting from University of Tanjungpura with expertise in financial reporting analysis and strong communication skills.</p>
+                    <p class="lead mb-4" data-key="title">International Accounting Graduate | Financial Analyst | Event Organizer</p>
+                    <p class="mb-4" data-key="description">Cum Laude graduate in International Accounting from University of Tanjungpura with expertise in financial reporting analysis and strong communication skills.</p>
                     <div class="d-flex justify-content-center justify-content-md-start gap-3">
                         <!-- Update path untuk CV -->
-                        <a href="assets/cv/CV_Annisa_Keysa_S_eng.pdf" download class="btn btn-custom">Download CV (EN)</a>
-                        <a href="assets/cv/CV_Annisa_Keysa_S_id.pdf" download class="btn btn-outline-custom">Download CV (ID)</a>
+                        <a href="assets/cv/CV_Annisa_Keysa_S_eng.pdf" download class="btn btn-custom" data-key="cv_en">Download CV (EN)</a>
+                        <a href="assets/cv/CV_Annisa_Keysa_S_id.pdf" download class="btn btn-outline-custom" data-key="cv_id">Download CV (ID)</a>
                     </div>
                 </div>
             </div>
@@ -474,13 +532,13 @@
     <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title" data-key="about_title">About Me</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="section-card p-4">
-                        <p class="mb-3">A Cum Laude graduate in International Accounting from University of Tanjungpura who's passionate about analyzing financial reporting and continuously learning new things.</p>
-                        <p class="mb-3">I possess strong communication skills that enable effective collaboration within teams. I'm a diligent worker who adheres to systematic approaches, employing a priority scale to ensure tasks are completed efficiently and effectively.</p>
-                        <p>My international experiences have equipped me with cross-cultural understanding and the ability to thrive in diverse environments.</p>
+                        <p class="mb-3" data-key="about1">A Cum Laude graduate in International Accounting from University of Tanjungpura who's passionate about analyzing financial reporting and continuously learning new things.</p>
+                        <p class="mb-3" data-key="about2">I possess strong communication skills that enable effective collaboration within teams. I'm a diligent worker who adheres to systematic approaches, employing a priority scale to ensure tasks are completed efficiently and effectively.</p>
+                        <p data-key="about3">My international experiences have equipped me with cross-cultural understanding and the ability to thrive in diverse environments.</p>
                     </div>
                 </div>
             </div>
@@ -490,15 +548,15 @@
     <!-- Education Section -->
     <section id="education" class="py-5">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title" data-key="education_title">Education</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="section-card p-4">
                         <div class="timeline-item">
-                            <h4>Bachelor's Degree in International Accounting</h4>
-                            <h5>University of Tanjungpura - Pontianak, Indonesia</h5>
+                            <h4 data-key="degree">Bachelor's Degree in International Accounting</h4>
+                            <h5 data-key="university">University of Tanjungpura - Pontianak, Indonesia</h5>
                             <p class="text-muted">August 2021 - December 2024</p>
-                            <p>GPA: 3.94 (Cum Laude)</p>
+                            <p data-key="gpa">GPA: 3.94 (Cum Laude)</p>
                         </div>
                     </div>
                 </div>
@@ -509,58 +567,58 @@
     <!-- Experience Section -->
     <section id="experience" class="py-5">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title" data-key="experience_title">Professional Experience</h2>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="section-card p-4">
                         <div class="timeline-item">
-                            <h4>Master of Ceremony - EMPIRE Project Discussion</h4>
-                            <h5>International Class FEB UNTAN - Kuching, Malaysia</h5>
+                            <h4 data-key="event1_title">Master of Ceremony - EMPIRE Project Discussion</h4>
+                            <h5 data-key="event1_org">International Class FEB UNTAN - Kuching, Malaysia</h5>
                             <p class="text-muted">2023</p>
-                            <p>Successfully led the project discussion between the Delegations of UNTAN and UNIMAS delegates at Universiti Malaysia Sarawak (UNIMAS).</p>
+                            <p data-key="event1_desc">Successfully led the project discussion between the Delegations of UNTAN and UNIMAS delegates at Universiti Malaysia Sarawak (UNIMAS).</p>
                             <!-- Tambahkan link sertifikat -->
                             <a href="assets/certified/Annisa_Keysa_Syabina_Sertifikat.pdf" target="_blank" class="certificate-btn">
-                                <i class="fas fa-file-pdf"></i> View Certificate
+                                <i class="fas fa-file-pdf"></i> <span data-key="view_certificate">View Certificate</span>
                             </a>
                         </div>
                         
                         <div class="timeline-item">
-                            <h4>Delegation Member - EMPIRE Program</h4>
-                            <h5>International Class FEB UNTAN - Kuching & Kuala Lumpur, Malaysia</h5>
+                            <h4 data-key="event2_title">Delegation Member - EMPIRE Program</h4>
+                            <h5 data-key="event2_org">International Class FEB UNTAN - Kuching & Kuala Lumpur, Malaysia</h5>
                             <p class="text-muted">2023</p>
-                            <p>Successfully introduced Indonesian Culture at UNIMAS and Sunway University. Had project discussions with UNIMAS and Sunway University delegates.</p>
+                            <p data-key="event2_desc">Successfully introduced Indonesian Culture at UNIMAS and Sunway University. Had project discussions with UNIMAS and Sunway University delegates.</p>
                             <a href="assets/certified/Annisa_Keysa_Syabina_Sertifikat.pdf" target="_blank" class="certificate-btn">
-                                <i class="fas fa-file-pdf"></i> View Certificate
+                                <i class="fas fa-file-pdf"></i> <span data-key="view_certificate">View Certificate</span>
                             </a>
                         </div>
                         
                         <div class="timeline-item">
-                            <h4>Master of Ceremony - Folta 2023</h4>
-                            <h5>International Student Committee FEB UNTAN - Pontianak, Indonesia</h5>
+                            <h4 data-key="event3_title">Master of Ceremony - Folta 2023</h4>
+                            <h5 data-key="event3_org">International Student Committee FEB UNTAN - Pontianak, Indonesia</h5>
                             <p class="text-muted">2023</p>
-                            <p>Successfully led IC Folta until the end of the event and received good feedback from the audience.</p>
+                            <p data-key="event3_desc">Successfully led IC Folta until the end of the event and received good feedback from the audience.</p>
                             <a href="assets/certified/Annisa_Keysa_Syabina_Sertifikat.pdf" target="_blank" class="certificate-btn">
-                                <i class="fas fa-file-pdf"></i> View Certificate
+                                <i class="fas fa-file-pdf"></i> <span data-key="view_certificate">View Certificate</span>
                             </a>
                         </div>
                         
                         <div class="timeline-item">
-                            <h4>Event Organizer - EMPIRE Program</h4>
-                            <h5>International Class FEB UNTAN - Pontianak, Indonesia</h5>
+                            <h4 data-key="event4_title">Event Organizer - EMPIRE Program</h4>
+                            <h5 data-key="event4_org">International Class FEB UNTAN - Pontianak, Indonesia</h5>
                             <p class="text-muted">2022-2023</p>
-                            <p>Created the theme "EMPIRE: Enhancing Competencies of Youth in International Stage" and developed the event rundown. Chose to introduce Indonesian Culture as the central theme.</p>
+                            <p data-key="event4_desc">Created the theme "EMPIRE: Enhancing Competencies of Youth in International Stage" and developed the event rundown. Chose to introduce Indonesian Culture as the central theme.</p>
                             <a href="assets/certified/Annisa_Keysa_Syabina_Sertifikat.pdf" target="_blank" class="certificate-btn">
-                                <i class="fas fa-file-pdf"></i> View Certificate
+                                <i class="fas fa-file-pdf"></i> <span data-key="view_certificate">View Certificate</span>
                             </a>
                         </div>
                         
                         <div class="timeline-item">
-                            <h4>1st Winner - Indonesia & Japan Hackathon Camp 2022</h4>
-                            <h5>Cross-Cultural Program between UNTAN and Kochi University</h5>
+                            <h4 data-key="event5_title">1st Winner - Indonesia & Japan Hackathon Camp 2022</h4>
+                            <h5 data-key="event5_org">Cross-Cultural Program between UNTAN and Kochi University</h5>
                             <p class="text-muted">July 2022</p>
-                            <p>Presented SDG's Gender Equality with the theme "Love" and won 1st place for the presentation of SDG's idea.</p>
+                            <p data-key="event5_desc">Presented SDG's Gender Equality with the theme "Love" and won 1st place for the presentation of SDG's idea.</p>
                             <a href="assets/certified/Annisa_Keysa_Syabina_Sertifikat.pdf" target="_blank" class="certificate-btn">
-                                <i class="fas fa-file-pdf"></i> View Certificate
+                                <i class="fas fa-file-pdf"></i> <span data-key="view_certificate">View Certificate</span>
                             </a>
                         </div>
                     </div>
@@ -572,11 +630,11 @@
     <!-- Skills & Achievements Section -->
     <section id="skills" class="py-5">
         <div class="container">
-            <h2 class="section-title">Skills & Achievements</h2>
+            <h2 class="section-title" data-key="skills_title">Skills & Achievements</h2>
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="section-card p-4 h-100">
-                        <h4 class="mb-4">Hard Skills</h4>
+                        <h4 class="mb-4" data-key="hard_skills">Hard Skills</h4>
                         <div class="mb-3">
                             <span class="skill-badge">Financial Reporting Analysis</span>
                             <span class="skill-badge">Microsoft Office</span>
@@ -595,7 +653,7 @@
                 
                 <div class="col-lg-6 mb-4">
                     <div class="section-card p-4 h-100">
-                        <h4 class="mb-4">Soft Skills</h4>
+                        <h4 class="mb-4" data-key="soft_skills">Soft Skills</h4>
                         <div>
                             <span class="skill-badge">Communication</span>
                             <span class="skill-badge">Team Collaboration</span>
@@ -609,23 +667,23 @@
                 
                 <div class="col-lg-6 mb-4">
                     <div class="section-card p-4 h-100">
-                        <h4 class="mb-4">Achievements</h4>
+                        <h4 class="mb-4" data-key="achievements">Achievements</h4>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Chartered Accountant Scholarship Awardee by IAI (2024)</li>
-                            <li class="list-group-item">1st Winner of Business Idea Competition at Indonesia & Japan Hackathon Camp (2022)</li>
-                            <li class="list-group-item">Cum Laude Graduate with GPA 3.94</li>
+                            <li class="list-group-item" data-key="achievement1">Chartered Accountant Scholarship Awardee by IAI (2024)</li>
+                            <li class="list-group-item" data-key="achievement2">1st Winner of Business Idea Competition at Indonesia & Japan Hackathon Camp (2022)</li>
+                            <li class="list-group-item" data-key="achievement3">Cum Laude Graduate with GPA 3.94</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="col-lg-6 mb-4">
                     <div class="section-card p-4 h-100 publication-card">
-                        <h4 class="mb-4">Scientific Publication</h4>
-                        <p><strong>Does Carbon Performance and Company Size Affect Profitability? Exploring the Moderating Role of Women Directors in Mining Companies</strong></p>
-                        <p class="mb-1">International Research Journal of Economics and Management Studies (2024)</p>
+                        <h4 class="mb-4" data-key="publication">Scientific Publication</h4>
+                        <p><strong data-key="publication_title">Does Carbon Performance and Company Size Affect Profitability? Exploring the Moderating Role of Women Directors in Mining Companies</strong></p>
+                        <p class="mb-1" data-key="publication_journal">International Research Journal of Economics and Management Studies (2024)</p>
                         <!-- Tambahkan link publikasi -->
                         <a href="https://irjems.org/irjems-v3i9p140.html" target="_blank" class="publication-link">
-                            <i class="fas fa-external-link-alt"></i> View Publication
+                            <i class="fas fa-external-link-alt"></i> <span data-key="view_publication">View Publication</span>
                         </a>
                     </div>
                 </div>
@@ -636,7 +694,7 @@
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title" data-key="contact_title">Get In Touch</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <div class="section-card p-4">
@@ -645,23 +703,13 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
-                                <h5>Email</h5>
+                                <h5 data-key="email">Email</h5>
                                 <p>annisakeysa99@gmail.com</p>
                             </div>
                         </div>
                         
-                        <div class="contact-info">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div>
-                                <h5>LinkedIn</h5>
-                                <p>linkedin.com/in/annisakeysasyabina</p>
-                            </div>
-                        </div>
-                        
                         <div class="text-center mt-4">
-                            <a href="mailto:annisakeysa99@gmail.com" class="btn btn-custom">Send Message</a>
+                            <a href="mailto:annisakeysa99@gmail.com" class="btn btn-custom" data-key="send_message">Send Message</a>
                         </div>
                     </div>
                 </div>
@@ -678,12 +726,118 @@
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                 <a href="mailto:annisakeysa99@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
             </div>
-            <p class="mb-0">&copy; 2025 Annisa Keysa Syabina. All Rights Reserved.</p>
+            <p class="mb-0" data-key="copyright">&copy; 2025 Annisa Keysa Syabina. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Data terjemahan untuk bahasa Inggris dan Indonesia
+        const translations = {
+            en: {
+                "about": "About",
+                "education": "Education",
+                "experience": "Experience",
+                "skills": "Skills",
+                "contact": "Contact",
+                "title": "International Accounting Graduate | Financial Analyst | Event Organizer",
+                "description": "Cum Laude graduate in International Accounting from University of Tanjungpura with expertise in financial reporting analysis and strong communication skills.",
+                "cv_en": "Download CV (EN)",
+                "cv_id": "Download CV (ID)",
+                "about_title": "About Me",
+                "about1": "A Cum Laude graduate in International Accounting from University of Tanjungpura who's passionate about analyzing financial reporting and continuously learning new things.",
+                "about2": "I possess strong communication skills that enable effective collaboration within teams. I'm a diligent worker who adheres to systematic approaches, employing a priority scale to ensure tasks are completed efficiently and effectively.",
+                "about3": "My international experiences have equipped me with cross-cultural understanding and the ability to thrive in diverse environments.",
+                "education_title": "Education",
+                "degree": "Bachelor's Degree in International Accounting",
+                "university": "University of Tanjungpura - Pontianak, Indonesia",
+                "gpa": "GPA: 3.94 (Cum Laude)",
+                "experience_title": "Professional Experience",
+                "event1_title": "Master of Ceremony - EMPIRE Project Discussion",
+                "event1_org": "International Class FEB UNTAN - Kuching, Malaysia",
+                "event1_desc": "Successfully led the project discussion between the Delegations of UNTAN and UNIMAS delegates at Universiti Malaysia Sarawak (UNIMAS).",
+                "event2_title": "Delegation Member - EMPIRE Program",
+                "event2_org": "International Class FEB UNTAN - Kuching & Kuala Lumpur, Malaysia",
+                "event2_desc": "Successfully introduced Indonesian Culture at UNIMAS and Sunway University. Had project discussions with UNIMAS and Sunway University delegates.",
+                "event3_title": "Master of Ceremony - Folta 2023",
+                "event3_org": "International Student Committee FEB UNTAN - Pontianak, Indonesia",
+                "event3_desc": "Successfully led IC Folta until the end of the event and received good feedback from the audience.",
+                "event4_title": "Event Organizer - EMPIRE Program",
+                "event4_org": "International Class FEB UNTAN - Pontianak, Indonesia",
+                "event4_desc": "Created the theme \"EMPIRE: Enhancing Competencies of Youth in International Stage\" and developed the event rundown. Chose to introduce Indonesian Culture as the central theme.",
+                "event5_title": "1st Winner - Indonesia & Japan Hackathon Camp 2022",
+                "event5_org": "Cross-Cultural Program between UNTAN and Kochi University",
+                "event5_desc": "Presented SDG's Gender Equality with the theme \"Love\" and won 1st place for the presentation of SDG's idea.",
+                "view_certificate": "View Certificate",
+                "skills_title": "Skills & Achievements",
+                "hard_skills": "Hard Skills",
+                "soft_skills": "Soft Skills",
+                "achievements": "Achievements",
+                "achievement1": "Chartered Accountant Scholarship Awardee by IAI (2024)",
+                "achievement2": "1st Winner of Business Idea Competition at Indonesia & Japan Hackathon Camp (2022)",
+                "achievement3": "Cum Laude Graduate with GPA 3.94",
+                "publication": "Scientific Publication",
+                "publication_title": "Does Carbon Performance and Company Size Affect Profitability? Exploring the Moderating Role of Women Directors in Mining Companies",
+                "publication_journal": "International Research Journal of Economics and Management Studies (2024)",
+                "view_publication": "View Publication",
+                "contact_title": "Get In Touch",
+                "email": "Email",
+                "send_message": "Send Message",
+                "copyright": "&copy; 2025 Annisa Keysa Syabina. All Rights Reserved."
+            },
+            id: {
+                "about": "Tentang",
+                "education": "Pendidikan",
+                "experience": "Pengalaman",
+                "skills": "Keahlian",
+                "contact": "Kontak",
+                "title": "Lulusan Akuntansi Internasional | Analis Keuangan | Penyelenggara Acara",
+                "description": "Lulusan Cum Laude Akuntansi Internasional dari Universitas Tanjungpura dengan keahlian dalam analisis laporan keuangan dan kemampuan komunikasi yang kuat.",
+                "cv_en": "Unduh CV (EN)",
+                "cv_id": "Unduh CV (ID)",
+                "about_title": "Tentang Saya",
+                "about1": "Lulusan Cum Laude Akuntansi Internasional dari Universitas Tanjungpura yang bersemangat dalam menganalisis laporan keuangan dan terus belajar hal baru.",
+                "about2": "Saya memiliki keterampilan komunikasi yang kuat yang memungkinkan kolaborasi efektif dalam tim. Saya pekerja keras yang mengikuti pendekatan sistematis, menggunakan skala prioritas untuk memastikan tugas diselesaikan dengan efisien dan efektif.",
+                "about3": "Pengalaman internasional saya telah membekali saya dengan pemahaman lintas budaya dan kemampuan untuk berkembang di lingkungan yang beragam.",
+                "education_title": "Pendidikan",
+                "degree": "Gelar Sarjana Akuntansi Internasional",
+                "university": "Universitas Tanjungpura - Pontianak, Indonesia",
+                "gpa": "IPK: 3.94 (Cum Laude)",
+                "experience_title": "Pengalaman Profesional",
+                "event1_title": "Pembawa Acara - Diskusi Proyek EMPIRE",
+                "event1_org": "Kelas Internasional FEB UNTAN - Kuching, Malaysia",
+                "event1_desc": "Memimpin diskusi proyek antara Delegasi UNTAN dan delegasi UNIMAS di Universiti Malaysia Sarawak (UNIMAS).",
+                "event2_title": "Anggota Delegasi - Program EMPIRE",
+                "event2_org": "Kelas Internasional FEB UNTAN - Kuching & Kuala Lumpur, Malaysia",
+                "event2_desc": "Memperkenalkan Budaya Indonesia di UNIMAS dan Sunway University. Melakukan diskusi proyek dengan delegasi UNIMAS dan Sunway University.",
+                "event3_title": "Pembawa Acara - Folta 2023",
+                "event3_org": "Komite Mahasiswa Internasional FEB UNTAN - Pontianak, Indonesia",
+                "event3_desc": "Memimpin acara IC Folta hingga akhir dan menerima umpan balik yang baik dari audiens.",
+                "event4_title": "Penyelenggara Acara - Program EMPIRE",
+                "event4_org": "Kelas Internasional FEB UNTAN - Pontianak, Indonesia",
+                "event4_desc": "Menciptakan tema \"EMPIRE: Enhancing Competencies of Youth in International Stage\" dan menyusun rundown acara. Memilih memperkenalkan Budaya Indonesia sebagai tema utama.",
+                "event5_title": "Juara 1 - Indonesia & Japan Hackathon Camp 2022",
+                "event5_org": "Program Lintas Budaya antara UNTAN dan Kochi University",
+                "event5_desc": "Mempresentasikan SDG Kesetaraan Gender dengan tema \"Cinta\" dan memenangkan tempat pertama untuk presentasi ide SDG.",
+                "view_certificate": "Lihat Sertifikat",
+                "skills_title": "Keahlian & Prestasi",
+                "hard_skills": "Keahlian Teknis",
+                "soft_skills": "Keahlian Non-Teknis",
+                "achievements": "Prestasi",
+                "achievement1": "Penerima Beasiswa Akuntan Bersertifikat oleh IAI (2024)",
+                "achievement2": "Juara 1 Kompetisi Ide Bisnis di Indonesia & Japan Hackathon Camp (2022)",
+                "achievement3": "Lulusan Cum Laude dengan IPK 3.94",
+                "publication": "Publikasi Ilmiah",
+                "publication_title": "Apakah Kinerja Karbon dan Ukuran Perusahaan Mempengaruhi Profitabilitas? Mengeksplorasi Peran Moderator Direktur Wanita di Perusahaan Pertambangan",
+                "publication_journal": "International Research Journal of Economics and Management Studies (2024)",
+                "view_publication": "Lihat Publikasi",
+                "contact_title": "Hubungi Saya",
+                "email": "Email",
+                "send_message": "Kirim Pesan",
+                "copyright": "&copy; 2025 Annisa Keysa Syabina. Hak Cipta Dilindungi."
+            }
+        };
+
         // Fungsi untuk toggle theme
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
@@ -701,17 +855,59 @@
             });
         }
 
+        // Fungsi untuk mengubah bahasa
+        function setLanguage(lang) {
+            // Simpan preferensi bahasa
+            localStorage.setItem('language', lang);
+            
+            // Perbarui teks tombol bahasa
+            document.querySelectorAll('.language-toggle').forEach(button => {
+                button.textContent = lang === 'en' ? 'ID' : 'EN';
+            });
+            
+            // Terapkan terjemahan
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    // Gunakan innerHTML untuk elemen yang mengandung markup HTML
+                    if (element.tagName === 'LI' || element.tagName === 'P' || element.tagName === 'H1' || 
+                        element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'H4' || 
+                        element.tagName === 'H5' || element.tagName === 'A' || element.tagName === 'SPAN') {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
         // Event listener untuk tombol tema
         document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
         document.getElementById('themeToggleDesktop').addEventListener('click', toggleTheme);
+        
+        // Event listener untuk tombol bahasa
+        document.getElementById('languageToggleMobile').addEventListener('click', function() {
+            const currentLang = localStorage.getItem('language') || 'en';
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            setLanguage(newLang);
+        });
+        
+        document.getElementById('languageToggleDesktop').addEventListener('click', function() {
+            const currentLang = localStorage.getItem('language') || 'en';
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            setLanguage(newLang);
+        });
 
-        // Inisialisasi tema
+        // Inisialisasi tema dan bahasa
         const savedTheme = localStorage.getItem('theme');
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
             document.body.classList.add('dark-mode');
         }
         updateThemeIcons();
+        
+        const savedLang = localStorage.getItem('language') || 'en';
+        setLanguage(savedLang);
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
