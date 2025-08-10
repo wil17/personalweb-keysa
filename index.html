@@ -78,7 +78,7 @@
             transition: background 0.4s ease, box-shadow 0.4s ease;
         }
 
-            .footer {
+        .footer {
             background: var(--navbar-bg);
             box-shadow: 0 2px 10px var(--shadow-color);
             transition: background 0.4s ease, box-shadow 0.4s ease;
@@ -97,9 +97,19 @@
             transition: background 0.4s ease;
         }
         
+        /* PERBAIKAN FOTO PROFIL */
+        .profile-img-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 25px;
+        }
+        
         .profile-img {
-            width: 220px;
-            height: 220px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
             border: 5px solid var(--card-bg);
             box-shadow: 0 5px 15px var(--shadow-color);
             z-index: 1;
@@ -396,17 +406,26 @@
             .desktop-toggle-group {
                 display: none;
             }
+            
+            /* Perbaikan untuk tampilan mobile */
+            .hero-section {
+                padding: 100px 0 50px;
+            }
+            
+            .profile-img-container {
+                width: 200px;
+                height: 200px;
+            }
         }
         
         @media (max-width: 768px) {
             .hero-section {
-                padding: 80px 0 50px;
+                padding: 80px 0 40px;
             }
             
-            .profile-img {
+            .profile-img-container {
                 width: 180px;
                 height: 180px;
-                margin-bottom: 20px;
             }
         }
         
@@ -512,8 +531,13 @@
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
+                <!-- Perbaikan pada bagian foto profil -->
                 <div class="col-md-4 text-center mb-4 mb-md-0">
-                    <img src="https://ui-avatars.com/api/?name=Annisa+Keysa&background=4a5568&color=fff&size=200" alt="Annisa Keysa Syabina" class="profile-img rounded-circle">
+                    <div class="profile-img-container">
+                        <img src="assets/profile.jpg" 
+                             alt="Annisa Keysa Syabina" 
+                             class="profile-img">
+                    </div>
                 </div>
                 <div class="col-md-8 text-center text-md-start">
                     <h1 class="display-4 fw-bold mb-3">Annisa Keysa Syabina</h1>
